@@ -1,9 +1,24 @@
 #!/usr/bin/perl
 
+use Getopt::Long;
 use JSON;
 
 # import environment varialbes & input data
-my %args = ("input-format" => "json", "output-format" => "json");
+my $format = 'json';
+my $input_format = '';
+my $output_format = '';
+
+GetOptions(
+    "format=s" => \$format,
+    "input-format=s"   => \$input_format,
+    "output-format=s"  => \$output_format
+) or die ("ERROR: Invalid options declaration!");
+
+$format = "json" if (length $format == 0);
+$input_format = $format if (length $input_format == 0);
+$output_format = $format if (length $output_format == 0);
+
+my %args = ("input-format" => $input_format, "output-format" => $output_format);
 my $store = bootstrap(\%args);
 
 # body of program: processing something here
