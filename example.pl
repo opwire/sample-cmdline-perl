@@ -4,21 +4,7 @@ use Getopt::Long;
 use JSON;
 
 # import environment varialbes & input data
-my $format = 'json';
-my $input_format = '';
-my $output_format = '';
-
-GetOptions(
-    "format=s" => \$format,
-    "input-format=s"   => \$input_format,
-    "output-format=s"  => \$output_format
-) or die ("ERROR: Invalid options declaration!");
-
-$format = "json" if (length $format == 0);
-$input_format = $format if (length $input_format == 0);
-$output_format = $format if (length $output_format == 0);
-
-my %args = ("input-format" => $input_format, "output-format" => $output_format);
+my %args = extractArgs();
 my $store = bootstrap(\%args);
 
 # body of program: processing something here
@@ -50,7 +36,7 @@ sub bootstrap {
   my $decoder = JSON->new->utf8;
   my %store = ();
 
-  foreach my $env_name ("OPWIRE_REQUEST", "OPWIRE_SETTING") {
+  foreach my $env_name ("OPWIRE_EDITION", "OPWIRE_REQUEST", "OPWIRE_SETTING") {
     if (exists $ENV{$env_name}) {
       $env_data = $ENV{$env_name};
       $store{$env_name} = $decoder->decode($env_data);
@@ -70,4 +56,22 @@ sub bootstrap {
   }
 
   return \%store;
+}
+
+sub extractArgs {
+  my $format = 'json';
+  my $input_format = '';
+  my $output_format = '';
+
+  GetOptions(
+      "format=s" => \$format,
+      "input-format=s"   => \$input_format,
+      "output-format=s"  => \$output_format
+  ) or die ("ERROR: Invalid options declaration!");
+
+  $format = "json" if (length $format == 0);
+  $input_format = $format if (length $input_format == 0);
+  $output_format = $format if (length $output_format == 0);
+
+  return ("input-format" => $input_format, "output-format" => $output_format);
 }
