@@ -1,8 +1,22 @@
 # opwire-agent: sample command line in Perl
 
-## Install
 
-Clone example source code from `github`:
+<!-- TOC -->
+
+- [Installation](#installation)
+  - [Checkout source code](#checkout-source-code)
+  - [Download `opwire-agent`](#download-opwire-agent)
+- [Call the service from browsers](#call-the-service-from-browsers)
+- [Contributing](#contributing)
+- [License](#license)
+
+<!-- /TOC -->
+
+## Installation
+
+### Checkout source code
+
+Clone example source code from github repository:
 
 ```shell
 git clone https://github.com/opwire/sample-cmdline-perl.git
@@ -14,11 +28,22 @@ Change the project home to current working directory:
 cd sample-cmdline-perl
 ```
 
-Download and extract the latest [`opwire-agent`](https://github.com/opwire/opwire-agent/releases/latest) program into this directory:
+### Download `opwire-agent`
+
+To download the latest `opwire-agent` on Linux/macOS/BSD systems, run:
+
+```shell
+curl https://opwire.org/opwire-agent/install.sh | bash
+```
+
+For other systems:
+
+* Download the relevant [`opwire-agent`](https://github.com/opwire/opwire-agent/releases/latest) release,
+* Extract the `opwire-agent` or `opwire-agent.exe` binary from the archive to example folder (current directory).
 
 ![project-home-dir](https://raw.github.com/opwire/sample-cmdline-perl/master/docs/assets/images/ls.png)
 
-## Run
+## Call the service from browsers
 
 Execute the following command:
 
