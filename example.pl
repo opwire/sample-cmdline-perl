@@ -36,7 +36,7 @@ sub bootstrap {
   my $decoder = JSON->new->utf8;
   my %store = ();
 
-  foreach my $env_name ("OPWIRE_EDITION", "OPWIRE_REQUEST", "OPWIRE_SETTING") {
+  foreach my $env_name ("OPWIRE_EDITION", "OPWIRE_REQUEST", "OPWIRE_SETTINGS") {
     if (exists $ENV{$env_name}) {
       $env_data = $ENV{$env_name};
       $store{$env_name} = $decoder->decode($env_data);
