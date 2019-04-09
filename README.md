@@ -67,7 +67,7 @@ or open with a web browser:
 Execute the following command:
 
 ```shell
-./opwire-agent serve -p=8888 --default-command="python example.py"
+./opwire-agent serve
 ```
 
 Make a HTTP request with `curl`:
